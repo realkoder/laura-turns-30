@@ -35,11 +35,6 @@ h1 {
     font-size: 1.5rem;
 }
 
-html,
-body {
-    height: 100%;
-}
-
 body {
     margin: 0;
     font-family: var(--font-sans);
@@ -65,10 +60,10 @@ body {
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.2);
 
-    grid-template-columns: 1fr 360px;
-    gap: 28px;
-    align-items: center;
-    min-height: 360px;
+
+
+
+
 
     /* Adds subtle metallic texture */
     background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.0) 40%),
@@ -134,3 +129,119 @@ body {
         padding: 20px;
     }
 }
+
+/* Carousel Container */
+.carousel {
+
+    max-width: 800px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: linear-gradient(145deg, #bfc1c2, #9a9c9e);
+    position: relative;
+}
+
+/* Scrollable Track */
+.carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar on mobile */
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+.carousel-track {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Each slide */
+.slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+/* Image styling */
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    filter: brightness(0.95) contrast(1.1);
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Hover / focus effect */
+.slide:hover img {
+    transform: scale(1.03);
+    filter: brightness(1) contrast(1.15);
+}
+
+/* Optional navigation dots */
+.carousel::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.6), rgba(255,255,255,0.3));
+    transform: translateX(-50%);
+    border-radius: 1px;
+    opacity: 0.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .carousel {
+        border-radius: 12px;
+    }
+    .slide img {
+        border-radius: 10px;
+    }
+}
+
+/* Donation Banner styling */
+.donation-banner {
+    width: 100%;
+    background: linear-gradient(145deg, #c9cbcd, #b1b3b5); /* metallic silver */
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.25);
+    padding: 16px 0;
+    border-radius: var(--radius);
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.donation-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--metal-dark);
+}
+
+.donation-content img {
+    max-width: 200px; /* juster efter behov */
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.donation-content p {
+    font-size: 14px;
+    color: var(--metal-dark);
+    opacity: 0.85;
+    margin: 0;
+}
+
+
